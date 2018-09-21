@@ -3,7 +3,6 @@ package com.adventurealley.adventurexp.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Customer {
     private int id;
