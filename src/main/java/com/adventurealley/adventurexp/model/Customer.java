@@ -9,18 +9,21 @@ public class Customer {
     private int id;
     private String name;
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    private LocalDate timeSlot;
+    private LocalDate startDate;
     private int age;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private LocalDate endDate;
 
     public Customer() {
 
     }
 
-    public Customer(int id, String name, LocalDate timeSlot, int age) {
+    public Customer(int id, String name, LocalDate startDate, int age, LocalDate endDate){
         this.id = id;
         this.name = name;
-        this.timeSlot = timeSlot;
+        this.startDate = startDate;
         this.age = age;
+        this.endDate = endDate;
     }
 
     public int getId() {
@@ -39,12 +42,12 @@ public class Customer {
         this.name = name;
     }
 
-    public LocalDate getTimeSlot() {
-        return timeSlot;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setTimeSlot(LocalDate timeSlot) {
-        this.timeSlot = timeSlot;
+    public void setStartDate(LocalDate timeSlot) {
+        this.endDate = timeSlot;
     }
 
     public int getAge() {
@@ -53,5 +56,13 @@ public class Customer {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 }
