@@ -14,11 +14,13 @@ public class CustomerRepository implements IRepository<Customer> {
     public boolean create(Customer item) {
 
         try {
-            preparedStatement = connection.prepareStatement("INSERT INTO name, startDate, age, endDate VALUES ?, ?, ?, ?");
+            preparedStatement = connection.prepareStatement("INSERT INTO customers(name, startDate, age, endDate) VALUES (?, ?, ?, ?)");
             preparedStatement.setString(1, item.getName());
             preparedStatement.setDate(2, Date.valueOf(item.getStartDate()));
             preparedStatement.setInt(3, item.getAge());
             preparedStatement.setDate(4, Date.valueOf(item.getEndDate()));
+
+            preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -29,7 +31,7 @@ public class CustomerRepository implements IRepository<Customer> {
     @Override
     public Customer read(int itemId) {
         try {
-            preparedStatement = connection.prepareStatement("SELECT FROM customers WHERE  id=?");
+            preparedStatement = connection.prepareStatement("SELECT * FROM customers WHERE  customerid=?");
             preparedStatement.setInt(1, itemId);
 
             resultSet = preparedStatement.executeQuery();

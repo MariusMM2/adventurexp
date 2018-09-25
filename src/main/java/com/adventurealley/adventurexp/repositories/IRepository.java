@@ -14,4 +14,5 @@ public interface IRepository<T> {
     ArrayList<T> readAll();
     boolean update(T item);
     boolean delete(int id);
+
 }
