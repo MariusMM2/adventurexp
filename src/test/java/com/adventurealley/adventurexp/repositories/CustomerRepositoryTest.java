@@ -1,12 +1,9 @@
 package com.adventurealley.adventurexp.repositories;
 
-import com.adventurealley.adventurexp.model.Customer;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDate;
-
-import static org.junit.Assert.*;
 
 public class CustomerRepositoryTest {
     private Customer cst = new Customer(7, "Dummy", LocalDate.now(), 18, LocalDate.now().plusWeeks(2));
