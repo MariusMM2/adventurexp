@@ -1,37 +1,34 @@
 package com.adventurealley.adventurexp.model;
 
-import javax.swing.*;
-
 public class Activity {
 
+    private int activityId;
     private String title;
     private int capacity;
     private String period;
     private int price;
     private String location;
     private int ageLimit;
-    private String Description;
+    private String description;
     private String staff;
 
-    public int getActivityId() {
-        return activityId;
-    }
-
-    public void setActivityId(int activityId) {
+    public Activity(int activityId, String title, int capacity, String period, int price, String location, int ageLimit, String description, String staff) {
         this.activityId = activityId;
-    }
-
-    private int activityId;
-
-    public Activity(String title, int capacity, String period, int price, String location, int ageLimit, String description, String staff, int activityId) {
         this.title = title;
         this.capacity = capacity;
         this.period = period;
         this.price = price;
         this.location = location;
         this.ageLimit = ageLimit;
-        this.Description = description;
+        this.description = description;
         this.staff = staff;
+    }
+
+    public int getActivityId() {
+        return activityId;
+    }
+
+    public void setActivityId(int activityId) {
         this.activityId = activityId;
     }
 
@@ -84,11 +81,11 @@ public class Activity {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public String getStaff() {
@@ -97,5 +94,20 @@ public class Activity {
 
     public void setStaff(String staff) {
         this.staff = staff;
+    }
+
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "activityId=" + activityId +
+                ", title='" + title + '\'' +
+                ", capacity=" + capacity +
+                ", period='" + period + '\'' +
+                ", price=" + price +
+                ", location='" + location + '\'' +
+                ", ageLimit=" + ageLimit +
+                ", description='" + description + '\'' +
+                ", staff='" + staff + '\'' +
+                '}';
     }
 }

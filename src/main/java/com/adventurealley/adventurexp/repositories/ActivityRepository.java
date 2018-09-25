@@ -8,11 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ActivityRepository implements IRepository<Activity> {
-
-    private PreparedStatement preparedStatement;
-    private ResultSet resultSet;
-
+public class ActivityRepository extends IRepository<Activity> {
 
     @Override
     public boolean create(Activity item) {
@@ -28,6 +24,7 @@ public class ActivityRepository implements IRepository<Activity> {
             resultSet.next();
 
             return new Activity(
+                    resultSet.getInt(itemId),
                     resultSet.getString("title"),
                     resultSet.getInt("capacity"),
                     resultSet.getString("period"),
@@ -35,13 +32,12 @@ public class ActivityRepository implements IRepository<Activity> {
                     resultSet.getString("location"),
                     resultSet.getInt("ageLimit"),
                     resultSet.getString("description"),
-                    resultSet.getString("staff"),
-                    resultSet.getInt("activtyId")
+                    resultSet.getString("staff")
             );
         }
         catch (SQLException e)
         {
-            e.printStackTrace();;
+            e.printStackTrace();
             return null;
         }
     }

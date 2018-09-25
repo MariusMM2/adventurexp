@@ -3,16 +3,20 @@ package com.adventurealley.adventurexp.repositories;
 import com.adventurealley.adventurexp.repositories.util.DBConnection;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public interface IRepository<T> {
+public abstract class IRepository<T> {
 
     Connection connection = DBConnection.getConnection();
+    PreparedStatement preparedStatement;
+    ResultSet resultSet;
 
-    boolean create(T item);
-    T read(int itemId);
-    ArrayList<T> readAll();
-    boolean update(T item);
-    boolean delete(int id);
+    abstract public boolean create(T item);
+    abstract public T read(int itemId);
+    abstract public ArrayList<T> readAll();
+    abstract public boolean update(T item);
+    abstract public boolean delete(int id);
 
 }
