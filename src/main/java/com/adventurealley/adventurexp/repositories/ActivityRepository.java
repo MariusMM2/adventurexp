@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 public class ActivityRepository implements IRepository<Activity> {
 
-    private Connection conn;
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
 
@@ -23,7 +22,7 @@ public class ActivityRepository implements IRepository<Activity> {
     @Override
     public Activity read(int itemId) {
         try {
-            preparedStatement = conn.prepareStatement("SELECT * FROM activity where activityId=?");
+            preparedStatement = connection.prepareStatement("SELECT * FROM activity where activityId=?");
             preparedStatement.setInt(1, itemId);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
