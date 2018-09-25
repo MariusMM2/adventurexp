@@ -95,7 +95,7 @@ public class CustomerRepository implements IRepository<Customer> {
     @Override
     public boolean delete(int id) {
         try {
-            preparedStatement = connection.prepareStatement("DELETE customers Where customerid=?");
+            preparedStatement = connection.prepareStatement("DELETE FROM customers WHERE customerid=?");
             preparedStatement.setInt(1,id);
 
             preparedStatement.execute();

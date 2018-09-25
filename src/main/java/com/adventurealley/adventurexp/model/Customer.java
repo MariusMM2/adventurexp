@@ -3,6 +3,7 @@ package com.adventurealley.adventurexp.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Customer {
     private int id;
@@ -63,5 +64,32 @@ public class Customer {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+
+    //Stuff for debugging and testing
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return id == customer.id &&
+                age == customer.age &&
+                Objects.equals(name, customer.name) &&
+                Objects.equals(startDate, customer.startDate) &&
+                Objects.equals(endDate, customer.endDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, startDate, age, endDate);
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
