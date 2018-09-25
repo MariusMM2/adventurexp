@@ -17,13 +17,13 @@ public class ActivityRepository implements IRepository<Activity> {
 
     @Override
     public boolean create(Activity item) {
-        return false;
+        throw new UnsupportedOperationException("Method not implemented: ActivityRepository.create");
     }
 
     @Override
     public Activity read(int itemId) {
         try {
-            preparedStatement = conn.prepareStatement("select * from activity");
+            preparedStatement = conn.prepareStatement("SELECT * FROM activity where activityId=?");
             preparedStatement.setInt(1, itemId);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
