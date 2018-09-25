@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Activity</title>
-    <!--add activity name with thymeleaf in the title-->
+    <title th:text="${activity.title}"></title>
+
 </head>
 <body>
+
+<h2 th:text="${activity.title}"></h2>
+
+<p th:text="Capacity + ${activity.capacity}" ></p>
+<p th:text="Period + ${activity.period}" ></p>
+<p th:text="Price + ${activity.price}" ></p>
+<p th:text="Location + ${activity.location}" ></p>
+<p th:text="Age limit + ${activity.ageLimit}" ></p>
+<p th:text="Description + ${activity.description}" ></p>
+<p th:text="Staff + ${activity.staff}" ></p>
 
 </body>
 </html>
