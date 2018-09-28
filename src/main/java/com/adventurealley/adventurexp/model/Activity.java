@@ -2,7 +2,7 @@ package com.adventurealley.adventurexp.model;
 
 public class Activity {
 
-    private int activityId;
+    private int id;
     private String title;
     private int capacity;
     private String period;
@@ -12,8 +12,8 @@ public class Activity {
     private String description;
     private String staff;
 
-    public Activity(int activityId, String title, int capacity, String period, int price, String location, int ageLimit, String description, String staff) {
-        this.activityId = activityId;
+    public Activity(int id, String title, int capacity, String period, int price, String location, int ageLimit, String description, String staff) {
+        this.id = id;
         this.title = title;
         this.capacity = capacity;
         this.period = period;
@@ -24,12 +24,12 @@ public class Activity {
         this.staff = staff;
     }
 
-    public int getActivityId() {
-        return activityId;
+    public int getId() {
+        return id;
     }
 
-    public void setActivityId(int activityId) {
-        this.activityId = activityId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -99,7 +99,7 @@ public class Activity {
     @Override
     public String toString() {
         return "Activity{" +
-                "activityId=" + activityId +
+                "id=" + id +
                 ", title='" + title + '\'' +
                 ", capacity=" + capacity +
                 ", period='" + period + '\'' +
