@@ -4,6 +4,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
+/**
+ * TODO: change start date and end date to a single day date
+ * TODO: change age to number of people
+ */
 public class Booking {
 
     private int id;
