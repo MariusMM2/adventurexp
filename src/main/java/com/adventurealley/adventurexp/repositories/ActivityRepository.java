@@ -17,6 +17,8 @@ public class ActivityRepository extends IRepository<Activity> {
         return instance;
     }
 
+    private ActivityRepository(){}
+
     @Override
     public boolean create(Activity item) {
         throw new UnsupportedOperationException("Method not implemented: ActivityRepository.create");
