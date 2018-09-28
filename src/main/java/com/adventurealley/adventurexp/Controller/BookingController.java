@@ -49,6 +49,6 @@ public class BookingController {
 
     @GetMapping("/")
     public String home(){
-        return "homePage";
+        return "index";
     }
 }
