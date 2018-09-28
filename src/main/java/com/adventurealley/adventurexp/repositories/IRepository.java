@@ -13,7 +13,7 @@ public abstract class IRepository<T> {
     PreparedStatement preparedStatement;
     ResultSet resultSet;
 
-    abstract public boolean create(T item);
+    abstract public int create(T item);
     abstract public T read(int itemId);
     abstract public ArrayList<T> readAll();
     abstract public boolean update(T item);

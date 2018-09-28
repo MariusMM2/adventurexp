@@ -20,7 +20,7 @@ public class ActivityRepository extends IRepository<Activity> {
     private ActivityRepository(){}
 
     @Override
-    public boolean create(Activity item) {
+    public int create(Activity item) {
         throw new UnsupportedOperationException("Method not implemented: ActivityRepository.create");
     }
 
