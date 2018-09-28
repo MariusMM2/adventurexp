@@ -21,7 +21,7 @@ public class BookingController {
         return "activityInfo";
     }
 
-    @GetMapping("/homePage")
+    @GetMapping("/")
     public String home(){
         return "homePage";
     }
