@@ -15,6 +15,7 @@ public class Booking {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate endDate;
 
+
     public Booking() {
 
     }
