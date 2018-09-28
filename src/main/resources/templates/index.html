@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title th:text="'Adventure Alleys Management - ' + ${activity.title}" ></title>
+	<title>Adventure Alleys Management - Home</title>
 	<style>
 		/*!
 		 * Materialize v1.0.0 (http://materializecss.com)
@@ -99,55 +99,53 @@
 	</div>
 	<div class="container left-align">
 		<div class="row">
-			<div class="col l5 push-l1">
-				<div class="card-panel white-text z-depth-2 light-blue darken-3">
-					<span class="card-title" th:text="${activity.title}"></span>
-					<p th:text="'Description: ' + ${activity.description}" ></p>
-					<p th:text="'Price: ' + ${activity.price}" ></p>
-					<p th:text="'Period: ' + ${activity.period}" ></p>
-					<p th:text="'Capacity: ' + ${activity.capacity}" ></p>
-					<p th:text="'Age limit: ' + ${activity.ageLimit}" ></p>
-					<p th:text="'Staff: ' + ${activity.staff}" ></p>
-					<p th:text="'Location: ' + ${activity.location}" ></p>
-				</div>
+			<div class="col l2 center-align">
+				<a href="activtyInfo?id=1">
+					<div class="card-panel hoverable white-text z-depth-2 light-blue darken-3">
+						<img src="https://images.pexels.com/photos/821723/pexels-photo-821723.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="circle" width="75" height="75">
+						<h6>GoKart</h6>
+					</div>
+				</a>
 			</div>
-			<div class="col l5 push-l1">
-				<div class="card-panel white-text z-depth-2 light-blue darken-3">
-					<form action="" method="post">
-						<span class="card-title" th:text="${activity.title}">Create Reservation</span>
-						<p>Date: <input type="date" name="reservationDate" required></p>
-						<p>Customer Name: <input type="text" name="customerName" required></p>
-						<p>Number of People: <input type="text" name="reservationPeople" required></p>
-						<input type="submit" class="btn-large waves-effect waves-light" value="Create">
-					</form>
-				</div>
+			<div class="col l2 center-align">
+				<a href="activtyInfo?id=2">
+					<div class="card-panel hoverable white-text z-depth-2 light-blue darken-3">
+						<img src="https://images.pexels.com/photos/581313/pexels-photo-581313.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="circle" width="75" height="75">
+						<h6>Sumo</h6>
+					</div>
+				</a>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col l2 push-l1">
-				<div class="card-panel white-text z-depth-2 light-blue darken-3">
-					
-				</div>
+			<div class="col l2 center-align">
+				<a href="activtyInfo?id=3">
+					<div class="card-panel hoverable white-text z-depth-2 light-blue darken-3">
+						<img src="https://images.pexels.com/photos/54123/pexels-photo-54123.jpeg?auto=compress&cs=tinysrgb&h=350" class="circle" width="75" height="75">
+						<h6>Mini Golf</h6>
+					</div>
+				</a>
 			</div>
-			<div class="col l2 push-l1">
-				<div class="card-panel white-text z-depth-2 light-blue darken-3">
-
-				</div>
+			<div class="col l2 center-align">
+				<a href="activtyInfo?id=4">
+					<div class="card-panel hoverable white-text z-depth-2 light-blue darken-3">
+						<img src="https://images.pexels.com/photos/945471/pexels-photo-945471.jpeg?auto=compress&cs=tinysrgb&h=350" class="circle" width="75" height="75">
+						<h6>Basketball</h6>
+					</div>
+				</a>
 			</div>
-			<div class="col l2 push-l1">
-				<div class="card-panel white-text z-depth-2 light-blue darken-3">
-
-				</div>
+			<div class="col l2 center-align">
+				<a href="activtyInfo?id=5">
+					<div class="card-panel hoverable white-text z-depth-2 light-blue darken-3">
+						<img src="https://images.pexels.com/photos/3931/funfair-fair-fun-fair-bumper-car.jpg?auto=compress&cs=tinysrgb&h=350" class="circle" width="75" height="75">
+						<h6>Bumper</h6>
+					</div>
+				</a>
 			</div>
-			<div class="col l2 push-l1">
-				<div class="card-panel white-text z-depth-2 light-blue darken-3">
-
-				</div>
-			</div>
-			<div class="col l2 push-l1">
-				<div class="card-panel white-text z-depth-2 light-blue darken-3">
-
-				</div>
+			<div class="col l2 center-align">
+				<a href="activtyInfo?id=6">
+					<div class="card-panel hoverable white-text z-depth-2 light-blue darken-3">
+						<img src="https://images.unsplash.com/photo-1522515218385-a5488252fa90?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=458b0fa93513c2a96fd05b6ccd90aec5&auto=format&fit=crop&w=700&q=60" class="circle" width="75" height="75">
+						<h6>Paintball</h6>
+					</div>
+				</a>
 			</div>
 		</div>
 	</div>
