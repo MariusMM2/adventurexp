@@ -10,8 +10,17 @@ import java.util.ArrayList;
 
 public class ActivityRepository extends IRepository<Activity> {
 
+    private static ActivityRepository instance;
+    public static ActivityRepository getInstance(){
+        if (instance == null)
+            instance = new ActivityRepository();
+        return instance;
+    }
+
+    private ActivityRepository(){}
+
     @Override
-    public boolean create(Activity item) {
+    public int create(Activity item) {
         throw new UnsupportedOperationException("Method not implemented: ActivityRepository.create");
     }
 

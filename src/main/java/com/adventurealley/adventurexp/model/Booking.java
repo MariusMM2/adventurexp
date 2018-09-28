@@ -7,6 +7,7 @@ import java.time.LocalDate;
 public class Booking {
 
     private int id;
+    private int activityId;
     private String name;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate startDate;
@@ -14,12 +15,14 @@ public class Booking {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate endDate;
 
+
     public Booking() {
 
     }
 
-    public Booking(int id, String name, LocalDate startDate, int age, LocalDate endDate) {
+    public Booking(int id, int activityId, String name, LocalDate startDate, int age, LocalDate endDate) {
         this.id = id;
+        this.activityId = activityId;
         this.name = name;
         this.startDate = startDate;
         this.age = age;
@@ -32,6 +35,14 @@ public class Booking {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getActivityId() {
+        return activityId;
+    }
+
+    public void setActivityId(int activityId) {
+        this.activityId = activityId;
     }
 
     public String getName() {

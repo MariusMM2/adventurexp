@@ -10,7 +10,7 @@ public class ActivityRepositoryTest {
 
     @Test
     public void read() {
-        IRepository<Activity> activityIRepository = new ActivityRepository();
+        IRepository<Activity> activityIRepository = ActivityRepository.getInstance();
         Activity activity = activityIRepository.read(1);
         Assert.assertNotNull(activity);
         System.out.println(activity);
