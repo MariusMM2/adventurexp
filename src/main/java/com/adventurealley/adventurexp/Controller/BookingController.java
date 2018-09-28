@@ -28,12 +28,16 @@ public class BookingController {
     }
 
     @PostMapping("/activityInfo")
-    public String book(Model model, @ModelAttribute("bookingForm") BookingForm bookingForm){
+    public String book(Model model, @ModelAttribute("bookingForm") BookingForm bookingForm, @RequestParam("id") int id){
         System.out.println(bookingForm);
         if (!bookingForm.validate()){
             model.addAttribute("errorMessage", "Invalid field");
             return "activityInfo";
         }
+
+        Activity activity = activityRepository.read(id);
+        assert activity != null;
+        model.addAttribute("activity", activity);
 
         Booking booking = bookingForm.toModel();
 
