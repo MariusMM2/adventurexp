@@ -11,8 +11,9 @@ public class Activity {
     private int ageLimit;
     private String description;
     private String staff;
+    private String imgpath;
 
-    public Activity(int id, String title, int capacity, String period, int price, String location, int ageLimit, String description, String staff) {
+    public Activity(int id, String title, int capacity, String period, int price, String location, int ageLimit, String description, String staff, String imgpath) {
         this.id = id;
         this.title = title;
         this.capacity = capacity;
@@ -22,6 +23,10 @@ public class Activity {
         this.ageLimit = ageLimit;
         this.description = description;
         this.staff = staff;
+        this.imgpath = imgpath;
+    }
+
+    public Activity() {
     }
 
     public int getId() {
@@ -109,5 +114,13 @@ public class Activity {
                 ", description='" + description + '\'' +
                 ", staff='" + staff + '\'' +
                 '}';
+    }
+
+    public String getImgpath() {
+        return imgpath;
+    }
+
+    public void setImgpath(String imgpath) {
+        this.imgpath = imgpath;
     }
 }

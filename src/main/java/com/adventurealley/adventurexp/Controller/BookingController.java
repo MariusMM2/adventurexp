@@ -19,6 +19,7 @@ public class BookingController {
     private IRepository<Activity> activityRepository = ActivityRepository.getInstance();
     private IRepository<Booking>  bookingRepository = BookingRepository.getInstance();
 
+
     @GetMapping("/activityInfo")
     public String details(@RequestParam("id") int id, Model model){
         Activity activity = activityRepository.read(id);
@@ -54,8 +55,22 @@ public class BookingController {
         return "activityInfo";
     }
 
+    @GetMapping("/create")
+    public String create(Model model){
+        model.addAttribute(new Activity());
+        return "create";
+    }
+
+    @PostMapping("/create")
+    public String create(@ModelAttribute Activity activity){
+        activityRepository.create(activity);
+        return "redirect:/";
+
+    }
+
     @GetMapping("/")
-    public String home(){
+    public String home(Model model){
+        model.addAttribute("activities", activityRepository.readAll());
         return "index";
     }
 }

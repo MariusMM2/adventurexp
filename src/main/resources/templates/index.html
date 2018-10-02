@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="UTF-8">
 	<title>Adventure Alleys Management - Home</title>
@@ -99,55 +99,29 @@
 	</div>
 	<div class="container left-align">
 		<div class="row">
+
+			<div th:each="activity: ${activities}">
 			<div class="col l2 center-align">
-				<a href="activityInfo?id=1">
+				<a th:href="'/activityInfo?id=' + ${activity.id}">
 					<div class="card-panel hoverable white-text z-depth-2 light-blue darken-3">
-						<img src="https://images.pexels.com/photos/821723/pexels-photo-821723.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="circle" width="75" height="75">
-						<h6>GoKart</h6>
+						<img th:src="${activity.imgpath}" class="circle" width="75" height="75">
+						<h6 th:text="${activity.title}"></h6>
 					</div>
 				</a>
 			</div>
-			<div class="col l2 center-align">
-				<a href="activityInfo?id=2">
-					<div class="card-panel hoverable white-text z-depth-2 light-blue darken-3">
-						<img src="https://images.pexels.com/photos/581313/pexels-photo-581313.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="circle" width="75" height="75">
-						<h6>Sumo</h6>
-					</div>
-				</a>
 			</div>
-			<div class="col l2 center-align">
-				<a href="activityInfo?id=3">
-					<div class="card-panel hoverable white-text z-depth-2 light-blue darken-3">
-						<img src="https://images.pexels.com/photos/54123/pexels-photo-54123.jpeg?auto=compress&cs=tinysrgb&h=350" class="circle" width="75" height="75">
-						<h6>Mini Golf</h6>
-					</div>
-				</a>
-			</div>
-			<div class="col l2 center-align">
-				<a href="activityInfo?id=4">
-					<div class="card-panel hoverable white-text z-depth-2 light-blue darken-3">
-						<img src="https://images.pexels.com/photos/945471/pexels-photo-945471.jpeg?auto=compress&cs=tinysrgb&h=350" class="circle" width="75" height="75">
-						<h6>Basketball</h6>
-					</div>
-				</a>
-			</div>
-			<div class="col l2 center-align">
-				<a href="activityInfo?id=5">
-					<div class="card-panel hoverable white-text z-depth-2 light-blue darken-3">
-						<img src="https://images.pexels.com/photos/3931/funfair-fair-fun-fair-bumper-car.jpg?auto=compress&cs=tinysrgb&h=350" class="circle" width="75" height="75">
-						<h6>Bumper</h6>
-					</div>
-				</a>
-			</div>
-			<div class="col l2 center-align">
-				<a href="activityInfo?id=6">
-					<div class="card-panel hoverable white-text z-depth-2 light-blue darken-3">
-						<img src="https://images.unsplash.com/photo-1522515218385-a5488252fa90?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=458b0fa93513c2a96fd05b6ccd90aec5&auto=format&fit=crop&w=700&q=60" class="circle" width="75" height="75">
-						<h6>Paintball</h6>
-					</div>
-				</a>
-			</div>
+
 		</div>
+
+		<div class="col l2 center-align">
+			<a href="/create">
+				<div class="card-panel hoverable white-text z-depth-2 light-blue darken-3">
+					<img src="http://static1.squarespace.com/static/575c56519f72666e381d4efd/57615788356fb0f59a8cefc7/59ea1cdbf6576e0712933816/1508515115296/create.jpg?format=1000w" class="circle" width="75" height="75">
+					<h6>Create new activity</h6>
+				</div>
+			</a>
+		</div>
+
 	</div>
 </body>
 </html>

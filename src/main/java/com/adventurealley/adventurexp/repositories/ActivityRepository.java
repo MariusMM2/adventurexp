@@ -21,7 +21,37 @@ public class ActivityRepository extends IRepository<Activity> {
 
     @Override
     public int create(Activity item) {
-        throw new UnsupportedOperationException("Method not implemented: ActivityRepository.create");
+        try {
+            preparedStatement = connection.prepareStatement("INSERT INTO activity(title, capacity, period, price, location, ageLimit, description, staff, imgpath) VALUES (?,?,?,?,?,?,?,?,?)" );
+
+            preparedStatement.setString(1,item.getTitle());
+            preparedStatement.setInt(2,item.getCapacity());
+            preparedStatement.setString(3,item.getPeriod());
+            preparedStatement.setInt(4,item.getPrice());
+            preparedStatement.setString(5,item.getLocation());
+            preparedStatement.setInt(6,item.getAgeLimit());
+            preparedStatement.setString(7,item.getDescription());
+            preparedStatement.setString(8,item.getStaff());
+            preparedStatement.setString(9,item.getImgpath());
+
+
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            preparedStatement = connection.prepareStatement("SELECT id FROM activity ORDER BY id DESC LIMIT 1");
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                return resultSet.getInt("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return -1;
+        // throw new UnsupportedOperationException("Method not implemented: ActivityRepository.create");
     }
 
     @Override
@@ -41,7 +71,8 @@ public class ActivityRepository extends IRepository<Activity> {
                     resultSet.getString("location"),
                     resultSet.getInt("ageLimit"),
                     resultSet.getString("description"),
-                    resultSet.getString("staff")
+                    resultSet.getString("staff"),
+                    resultSet.getString("imgpath")
             );
         }
         catch (SQLException e)
@@ -53,7 +84,29 @@ public class ActivityRepository extends IRepository<Activity> {
 
     @Override
     public ArrayList<Activity> readAll() {
-        return null;
+        ArrayList<Activity> activities = new ArrayList<>();
+
+        try {
+            preparedStatement = connection.prepareStatement("SELECT * FROM activity");
+            resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                activities.add(new Activity(resultSet.getInt("activityId"),
+                        resultSet.getString("title"),
+                        resultSet.getInt("capacity"),
+                        resultSet.getString("period"),
+                        resultSet.getInt("price"),
+                        resultSet.getString("location"),
+                        resultSet.getInt("ageLimit"),
+                        resultSet.getString("description"),
+                        resultSet.getString("staff"),
+                        resultSet.getString("imgpath")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return activities;
     }
 
     @Override

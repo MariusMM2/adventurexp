@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>createActivity</title>
+</head>
+<body>
+<h2>Create new activity</h2>
+
+<form th:action="@{/create}" method="post">
+    <p>Title:</p>
+    <input type="text" name="title">
+    <p>Capacity:</p>
+    <input type="number" name="capacity">
+    <p>Period:</p>
+    <input type="text" name="period">
+    <p>Price:</p>
+    <input type="number" name="price">
+    <p>Location:</p>
+    <input type="text" name="location">
+    <p>Age limit:</p>
+    <input type="number" name="ageLimit">
+    <p>Description:</p>
+    <input type="text" name="description">
+    <p>Staff:</p>
+    <input type="text" name="staff">
+    <p>Image Path:</p>
+    <input type="text" name="imgpath">
+
+    <p><input type="submit" value="Submit" class="btn"></p>
+</form>
+</body>
+</html>
