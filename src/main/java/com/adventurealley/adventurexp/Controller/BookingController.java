@@ -1,6 +1,7 @@
 package com.adventurealley.adventurexp.Controller;
 
 import com.adventurealley.adventurexp.forms.BookingForm;
+import com.adventurealley.adventurexp.forms.BookingSearchForm;
 import com.adventurealley.adventurexp.model.Activity;
 import com.adventurealley.adventurexp.model.Booking;
 import com.adventurealley.adventurexp.repositories.ActivityRepository;
@@ -78,25 +79,20 @@ public class BookingController {
 
     @GetMapping("/searchBooking")
     public String search(Model model){
-        model.addAttribute("bookings", bookingRepository.readAll());
-        model.addAttribute("searchString", "");
-        
+        BookingSearchForm form = new BookingSearchForm(bookingRepository.readAll().toArray(new Booking[]{}));
+        model.addAttribute("searchObj", form);
+
         return "searchBooking";
     }
     
     @PostMapping("/searchBooking")
-    public String search(Model model, @ModelAttribute("searchString") String searchString){
+    public String search(Model model, @ModelAttribute("searchObj") BookingSearchForm searchForm){
         ArrayList<Booking> foundBookings = new ArrayList<>();
         ArrayList<Booking> allBookings = bookingRepository.readAll();
 
-        for (Booking booking : allBookings) {
-            if (booking.getName().toLowerCase().contains(searchString.toLowerCase())){
-                foundBookings.add(booking);
-            }
-        }
-//        model.
-        System.out.println(searchString);
-        System.out.println(foundBookings.toString());
+        searchForm.search();
+
+        System.out.println("has searchObj: " + model.containsAttribute("searchObj"));
         model.addAttribute("bookings", foundBookings);
         
         return "searchBooking";

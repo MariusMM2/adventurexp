@@ -2,19 +2,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="'Booking ' + ${searchString}"></title>
+    <title th:text="'Booking ' + ${searchObj.searchString}"></title>
 </head>
 <body>
-<form action="/searchBooking" method="post">
+<form action="/searchBooking" th:object="${searchObj}" method="post">
     <p>
-        <input type="text" th:field="${searchString}">
+        <input type="text" th:value="*{searchString}" title="Search">
         <input type="submit" value="Search" class="btn">
     </p>
 </form>
 
-<div th:each="booking: ${bookings}">
+<div th:each="booking: ${searchObj.bookings}">
     <h6 th:text="${booking.name}"></h6>
     <h6 th:text="${booking.startDate}"></h6>
+    <h6>-------------------</h6>
 </div>
 </body>
 </html>
