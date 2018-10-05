@@ -2,17 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="'Booking ' + ${searchObj.searchString}"></title>
+    <title th:text="'Booking ' + ${searchForm.searchString}"></title>
 </head>
 <body>
-<form action="/searchBooking" th:object="${searchObj}" method="post">
+<form action="/searchBooking" th:object="${searchForm}" method="post">
     <p>
-        <input type="text" th:value="*{searchString}" title="Search">
+        <input type="text" th:field="*{searchString}" title="Search">
         <input type="submit" value="Search" class="btn">
     </p>
 </form>
 
-<div th:each="booking: ${searchObj.bookings}">
+<div th:each="booking: ${bookings}">
     <h6 th:text="${booking.name}"></h6>
     <h6 th:text="${booking.startDate}"></h6>
     <h6>-------------------</h6>

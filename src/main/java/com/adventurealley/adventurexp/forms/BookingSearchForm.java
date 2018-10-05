@@ -7,36 +7,24 @@ import java.util.Arrays;
 
 public class BookingSearchForm {
 
-    private final Booking[] ALL_BOOKINGS;
     private String searchString;
-    private Booking[] bookings;
 
-    public BookingSearchForm(Booking[] bookings) {
-        this.ALL_BOOKINGS = bookings;
-        this.searchString = "";
-        this.bookings = bookings;
-    }
-
-    public void search(){
+    public Booking[] search(ArrayList<Booking> allBookings){
         ArrayList<Booking> foundBookings = new ArrayList<>();
         boolean foundAMatch = false;
-        for (Booking b : ALL_BOOKINGS) {
+        for (Booking b : allBookings) {
             if (b.getName().toLowerCase().contains(searchString.toLowerCase())){
                 foundBookings.add(b);
                 foundAMatch = true;
             }
         }
-        Array.
 
         if (!foundAMatch){
-            bookings = ALL_BOOKINGS;
+            return allBookings.toArray(new Booking[]{});
         }
         else{
-            bookings = foundBookings.toArray(new Booking[]{});
+            return foundBookings.toArray(new Booking[]{});
         }
-
-        System.out.println(searchString);
-        System.out.println(Arrays.toString(bookings));
     }
 
     public String getSearchString() {
@@ -45,13 +33,5 @@ public class BookingSearchForm {
 
     public void setSearchString(String searchString) {
         this.searchString = searchString;
-    }
-
-    public Booking[] getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(Booking[] bookings) {
-        this.bookings = bookings;
     }
 }

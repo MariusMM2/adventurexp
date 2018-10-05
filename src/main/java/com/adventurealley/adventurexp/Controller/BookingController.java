@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-
 @Controller
 public class BookingController {
 
@@ -43,8 +41,6 @@ public class BookingController {
             model.addAttribute("errorMessage", "Invalid field");
             return "activityInfo";
         }
-
-
 
         Booking booking = bookingForm.toModel();
 
@@ -79,22 +75,17 @@ public class BookingController {
 
     @GetMapping("/searchBooking")
     public String search(Model model){
-        BookingSearchForm form = new BookingSearchForm(bookingRepository.readAll().toArray(new Booking[]{}));
-        model.addAttribute("searchObj", form);
+        BookingSearchForm form = new BookingSearchForm();
 
+        model.addAttribute("searchForm", form);
+        model.addAttribute("bookings", bookingRepository.readAll());
         return "searchBooking";
     }
     
     @PostMapping("/searchBooking")
-    public String search(Model model, @ModelAttribute("searchObj") BookingSearchForm searchForm){
-        ArrayList<Booking> foundBookings = new ArrayList<>();
-        ArrayList<Booking> allBookings = bookingRepository.readAll();
+    public String search(Model model, @ModelAttribute("searchForm") BookingSearchForm searchForm){
 
-        searchForm.search();
-
-        System.out.println("has searchObj: " + model.containsAttribute("searchObj"));
-        model.addAttribute("bookings", foundBookings);
-        
+        model.addAttribute("bookings", searchForm.search(bookingRepository.readAll()));
         return "searchBooking";
     }
 }
