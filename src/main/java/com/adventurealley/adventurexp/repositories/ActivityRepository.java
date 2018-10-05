@@ -124,6 +124,7 @@ public class ActivityRepository extends IRepository<Activity> {
             preparedStatement.setString(7, item.getDescription());
             preparedStatement.setString(8, item.getStaff());
             preparedStatement.setString(9, item.getImgpath());
+            preparedStatement.setInt(10, item.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
