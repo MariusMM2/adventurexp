@@ -24,6 +24,11 @@ public class Booking {
 
     }
 
+    public Booking(String name, LocalDate startDate) {
+        this.name = name;
+        this.startDate = startDate;
+    }
+
     public Booking(int id, int activityId, String name, LocalDate startDate, int age, LocalDate endDate) {
         this.id = id;
         this.activityId = activityId;
@@ -79,5 +84,13 @@ public class Booking {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "name='" + name + '\'' +
+                ", startDate=" + startDate +
+                '}';
     }
 }

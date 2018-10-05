@@ -1,8 +1,10 @@
 package com.adventurealley.adventurexp.repositories;
 
+import com.adventurealley.adventurexp.model.Activity;
 import com.adventurealley.adventurexp.model.Booking;
 
 import javax.naming.PartialResultException;
+import java.sql.Array;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -68,7 +70,21 @@ public class BookingRepository extends IRepository<Booking>{
 
     @Override
     public ArrayList<Booking> readAll() {
-        return null;
+        ArrayList<Booking> bookings = new ArrayList<>();
+
+        try {
+            preparedStatement = connection.prepareStatement("SELECT * FROM booking");
+            resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                bookings.add(new Booking(resultSet.getString("name"),
+                        resultSet.getDate("startDate").toLocalDate()));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return bookings;
     }
 
     @Override

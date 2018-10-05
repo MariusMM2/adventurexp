@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+
 @Controller
 public class BookingController {
 
@@ -72,5 +74,31 @@ public class BookingController {
     public String home(Model model){
         model.addAttribute("activities", activityRepository.readAll());
         return "index";
+    }
+
+    @GetMapping("/searchBooking")
+    public String search(Model model){
+        model.addAttribute("bookings", bookingRepository.readAll());
+        model.addAttribute("searchString", "");
+        
+        return "searchBooking";
+    }
+    
+    @PostMapping("/searchBooking")
+    public String search(Model model, @ModelAttribute("searchString") String searchString){
+        ArrayList<Booking> foundBookings = new ArrayList<>();
+        ArrayList<Booking> allBookings = bookingRepository.readAll();
+
+        for (Booking booking : allBookings) {
+            if (booking.getName().toLowerCase().contains(searchString.toLowerCase())){
+                foundBookings.add(booking);
+            }
+        }
+//        model.
+        System.out.println(searchString);
+        System.out.println(foundBookings.toString());
+        model.addAttribute("bookings", foundBookings);
+        
+        return "searchBooking";
     }
 }
