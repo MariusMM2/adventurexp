@@ -63,7 +63,7 @@ public class ActivityRepository extends IRepository<Activity> {
             resultSet.next();
 
             return new Activity(
-                    resultSet.getInt(itemId),
+                    itemId,
                     resultSet.getString("title"),
                     resultSet.getInt("capacity"),
                     resultSet.getString("period"),
