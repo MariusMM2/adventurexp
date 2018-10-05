@@ -111,6 +111,24 @@ public class ActivityRepository extends IRepository<Activity> {
 
     @Override
     public boolean update(Activity item) {
+
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "UPDATE activity SET title=?, capacity=?, period=?, price=?, location=?, ageLimit=?, description=?, staff=?, imgpath=? WHERE activityId=?");
+            preparedStatement.setString(1, item.getTitle());
+            preparedStatement.setInt(2, item.getCapacity());
+            preparedStatement.setString(3, item.getPeriod());
+            preparedStatement.setInt(4, item.getPrice());
+            preparedStatement.setString(5, item.getLocation());
+            preparedStatement.setInt(6, item.getAgeLimit());
+            preparedStatement.setString(7, item.getDescription());
+            preparedStatement.setString(8, item.getStaff());
+            preparedStatement.setString(9, item.getImgpath());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return false;
     }
 

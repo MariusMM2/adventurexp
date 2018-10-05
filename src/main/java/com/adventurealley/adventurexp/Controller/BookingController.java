@@ -41,8 +41,6 @@ public class BookingController {
             return "activityInfo";
         }
 
-
-
         Booking booking = bookingForm.toModel();
 
         int id = bookingRepository.create(booking);
