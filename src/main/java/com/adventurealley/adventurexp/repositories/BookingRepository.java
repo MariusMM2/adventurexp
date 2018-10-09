@@ -22,11 +22,11 @@ public class BookingRepository extends IRepository<Booking>{
     @Override
     public int create(Booking item) {
         try {
-            preparedStatement = connection.prepareStatement("INSERT INTO booking(name, startDate, age, activityId) VALUES (?, ?, ?, ?)");
+            preparedStatement = connection.prepareStatement("INSERT INTO booking(name, date, nPeople, activityId) VALUES (?, ?, ?, ?)");
             preparedStatement.setString(1, item.getName());
             preparedStatement.setDate(2, Date.valueOf(item.getDate()));
             preparedStatement.setInt(3, item.getnPeople());
-            preparedStatement.setInt(5, item.getActivityId());
+            preparedStatement.setInt(4, item.getActivityId());
             preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -55,7 +55,7 @@ public class BookingRepository extends IRepository<Booking>{
                     resultSet.getInt("id"),
                     resultSet.getInt("activityId"),
                     resultSet.getString("name"),
-                    resultSet.getDate("startDate").toLocalDate(),
+                    resultSet.getDate("date").toLocalDate(),
                     resultSet.getInt("age"));
         } catch (SQLException e) {
             e.printStackTrace();
@@ -74,7 +74,7 @@ public class BookingRepository extends IRepository<Booking>{
 
             while(resultSet.next()){
                 bookings.add(new Booking(resultSet.getString("name"),
-                        resultSet.getDate("startDate").toLocalDate()));
+                        resultSet.getDate("date").toLocalDate()));
             }
         } catch (SQLException e) {
             e.printStackTrace();
