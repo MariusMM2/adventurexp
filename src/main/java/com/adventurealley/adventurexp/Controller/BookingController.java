@@ -43,6 +43,7 @@ public class BookingController {
         model.addAttribute("activity", activity);
 
         if (!bookingForm.validate()){
+            System.out.println("Form did not validate");
             model.addAttribute("errorMessage", "Invalid field");
             return "activityInfo";
         }
