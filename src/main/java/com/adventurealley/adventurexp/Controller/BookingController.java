@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
+
 @Controller
 public class BookingController {
 
@@ -26,11 +28,15 @@ public class BookingController {
         Activity activity = activityRepository.read(id);
         assert activity != null;
         model.addAttribute("activity", activity);
+        model.addAttribute("bookingForm", new BookingForm());
         return "activityInfo";
     }
 
+    //TODO: fix booking creation
     @PostMapping("/activityInfo")
     public String book(Model model, @ModelAttribute("bookingForm") BookingForm bookingForm, @RequestParam("id") int aid){
+        bookingForm.setActivityId(aid);
+        bookingForm.setEndDate(LocalDate.now().plusMonths(1));
         System.out.println(bookingForm);
 
         Activity activity = activityRepository.read(aid);
@@ -52,6 +58,20 @@ public class BookingController {
         model.addAttribute("successMessage", "Your booking number #" + id + " has been registered!");
 
         return "activityInfo";
+    }
+
+    @GetMapping("/activityEdit")
+    public String edit(@RequestParam("id") int id, Model model){
+        Activity activity = activityRepository.read(id);
+        assert activity != null;
+        model.addAttribute("activity", activity);
+        return "activityEdit";
+    }
+
+    @PostMapping("/activityEdit")
+    public String edit(@ModelAttribute("activity") Activity activity){
+        activityRepository.update(activity);
+        return "redirect:/activityInfo?id=" + activity.getId();
     }
 
     @GetMapping("/create")

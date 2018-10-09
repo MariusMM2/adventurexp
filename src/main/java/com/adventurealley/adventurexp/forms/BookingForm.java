@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
+//TODO: see Booking.java
 public class BookingForm implements Form<Booking> {
 
     private int activityId;

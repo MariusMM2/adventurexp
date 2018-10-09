@@ -41,7 +41,7 @@ public class ActivityRepository extends IRepository<Activity> {
         }
 
         try {
-            preparedStatement = connection.prepareStatement("SELECT id FROM activity ORDER BY id DESC LIMIT 1");
+            preparedStatement = connection.prepareStatement("SELECT activityId FROM activity ORDER BY activityId DESC LIMIT 1");
             resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
                 return resultSet.getInt("id");
@@ -60,8 +60,8 @@ public class ActivityRepository extends IRepository<Activity> {
             preparedStatement = connection.prepareStatement("SELECT * FROM activity where activityId=?");
             preparedStatement.setInt(1, itemId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            resultSet.next();
 
+            if(resultSet.next()){
             return new Activity(
                     itemId,
                     resultSet.getString("title"),
@@ -73,13 +73,13 @@ public class ActivityRepository extends IRepository<Activity> {
                     resultSet.getString("description"),
                     resultSet.getString("staff"),
                     resultSet.getString("imgpath")
-            );
+            );}
         }
         catch (SQLException e)
         {
             e.printStackTrace();
-            return null;
         }
+        return null;
     }
 
     @Override

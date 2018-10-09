@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title th:text="'Adventure Alleys Management - ' + ${activity.title}" ></title>
@@ -113,11 +113,11 @@
 			</div>
 			<div class="col l5 push-l1">
 				<div class="card-panel white-text z-depth-2 light-blue darken-3">
-					<form action="" method="post">
+					<form action="" th:object="${bookingForm}" method="post">
 						<span class="card-title" th:text="${activity.title}">Create Reservation</span>
-						<p>Date: <input type="date" name="reservationDate" required></p>
-						<p>Customer Name: <input type="text" name="customerName" required></p>
-						<p>Number of People: <input type="text" name="reservationPeople" required></p>
+						<p>Date: <input type="date" th:field="*{startDate}" required></p>
+						<p>Customer Name: <input type="text" th:field="*{name}" required></p>
+						<p>Number of People: <input type="number" th:field="*{age}" min="1" required></p>
 						<input type="submit" class="btn-large waves-effect waves-light" value="Create">
 					</form>
 				</div>
@@ -126,7 +126,7 @@
 		<div class="row">
 			<div class="col l2 push-l1">
 				<div class="card-panel white-text z-depth-2 light-blue darken-3">
-					
+					<a th:href="@{~/activityEdit(id=${activity.id})}">Edit</a>
 				</div>
 			</div>
 			<div class="col l2 push-l1">
