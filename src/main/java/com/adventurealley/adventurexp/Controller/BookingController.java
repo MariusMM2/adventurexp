@@ -32,7 +32,6 @@ public class BookingController {
         return "activityInfo";
     }
 
-    //TODO: fix booking creation
     @PostMapping("/activityInfo")
     public String book(Model model, @ModelAttribute("bookingForm") BookingForm bookingForm, @RequestParam("id") int aid){
         bookingForm.setActivityId(aid);
@@ -51,7 +50,7 @@ public class BookingController {
         Booking booking = bookingForm.toModel();
 
         int id = bookingRepository.create(booking);
-        if(id == -1 || ){
+        if(id == -1){
             System.out.println("Error creating the booking (database error)");
         }
 

@@ -5,10 +5,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 import java.util.Objects;
 
-/**
- * TODO: change start date and end date to a single day date
- * TODO: change nPeople to number of people
- */
 public class Booking {
 
     private int id;

@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-// TODO: connection dies after ~2 mins of inactivity, is it worth fixing?
 public class DBConnection {
 
 	//Credentials and strings
