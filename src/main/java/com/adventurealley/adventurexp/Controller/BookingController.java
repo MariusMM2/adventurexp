@@ -36,7 +36,6 @@ public class BookingController {
     @PostMapping("/activityInfo")
     public String book(Model model, @ModelAttribute("bookingForm") BookingForm bookingForm, @RequestParam("id") int aid){
         bookingForm.setActivityId(aid);
-        bookingForm.setEndDate(LocalDate.now().plusMonths(1));
         System.out.println(bookingForm);
 
         Activity activity = activityRepository.read(aid);
@@ -51,11 +50,11 @@ public class BookingController {
         Booking booking = bookingForm.toModel();
 
         int id = bookingRepository.create(booking);
-        if(id == -1){
-            model.addAttribute("errorMessage", "Error creating the booking (database error)");
+        if(id == -1 || ){
+            System.out.println("Error creating the booking (database error)");
         }
 
-        model.addAttribute("successMessage", "Your booking number #" + id + " has been registered!");
+        System.out.println("Your booking number #" + id + " has been registered!");
 
         return "activityInfo";
     }

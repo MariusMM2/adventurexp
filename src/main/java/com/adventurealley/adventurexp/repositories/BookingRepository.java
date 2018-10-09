@@ -1,13 +1,11 @@
 package com.adventurealley.adventurexp.repositories;
 
-import com.adventurealley.adventurexp.model.Activity;
 import com.adventurealley.adventurexp.model.Booking;
 
-import javax.naming.PartialResultException;
-import java.sql.Array;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class BookingRepository extends IRepository<Booking>{
@@ -24,11 +22,10 @@ public class BookingRepository extends IRepository<Booking>{
     @Override
     public int create(Booking item) {
         try {
-            preparedStatement = connection.prepareStatement("INSERT INTO booking(name, startDate, age, endDate, activityId)" + "VALUES (?, ?, ?, ?, ?)");
+            preparedStatement = connection.prepareStatement("INSERT INTO booking(name, startDate, age, activityId) VALUES (?, ?, ?, ?)");
             preparedStatement.setString(1, item.getName());
-            preparedStatement.setDate(2, Date.valueOf(item.getStartDate()));
-            preparedStatement.setInt(3, item.getAge());
-            preparedStatement.setDate(4, Date.valueOf(item.getEndDate()));
+            preparedStatement.setDate(2, Date.valueOf(item.getDate()));
+            preparedStatement.setInt(3, item.getnPeople());
             preparedStatement.setInt(5, item.getActivityId());
             preparedStatement.execute();
         } catch (SQLException e) {
@@ -59,8 +56,7 @@ public class BookingRepository extends IRepository<Booking>{
                     resultSet.getInt("activityId"),
                     resultSet.getString("name"),
                     resultSet.getDate("startDate").toLocalDate(),
-                    resultSet.getInt("age"),
-                    resultSet.getDate("endDate").toLocalDate());
+                    resultSet.getInt("age"));
         } catch (SQLException e) {
             e.printStackTrace();
         }

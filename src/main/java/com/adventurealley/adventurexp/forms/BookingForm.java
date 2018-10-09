@@ -12,26 +12,23 @@ public class BookingForm implements Form<Booking> {
     private int activityId;
     private String name;
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    private LocalDate startDate;
-    private int age;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    private LocalDate endDate;
+    private LocalDate date;
+    private int nPeople;
 
     @Override
     public boolean validate() {
 
         boolean activityId 	= ActivityRepository.getInstance().read(this.activityId) != null;
         boolean name        = this.name != null && this.name.length() > 0;
-        boolean startDate 	= this.startDate != null && this.startDate.isAfter(LocalDate.now());
-        boolean endDate 	= startDate && this.endDate != null  && this.endDate.isAfter(this.startDate);
-        boolean age         = this.age > 0 && this.age <= 150;
-        return activityId && name && startDate && endDate && age;
+        boolean date 	    = this.date != null;
+        boolean age         = this.nPeople > 0 && this.nPeople <= 150;
+        return activityId && name && date && age;
     }
 
     @Override
     public Booking toModel() {
 
-        return new Booking(-1, activityId, name, startDate, age, endDate);
+        return new Booking(-1, activityId, name, date, nPeople);
     }
 
     @Override
@@ -39,9 +36,8 @@ public class BookingForm implements Form<Booking> {
         return "BookingForm{" +
                 "activityId=" + activityId +
                 ", name='" + name + '\'' +
-                ", startDate=" + startDate +
-                ", age=" + age +
-                ", endDate=" + endDate +
+                ", date=" + date +
+                ", nPeople=" + nPeople +
                 '}';
     }
 
@@ -61,27 +57,20 @@ public class BookingForm implements Form<Booking> {
         this.name = name;
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
-    public int getAge() {
-        return age;
+    public int getnPeople() {
+        return nPeople;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setnPeople(int nPeople) {
+        this.nPeople = nPeople;
     }
 
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
 }

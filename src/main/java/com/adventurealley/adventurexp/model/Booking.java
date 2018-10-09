@@ -3,10 +3,11 @@ package com.adventurealley.adventurexp.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * TODO: change start date and end date to a single day date
- * TODO: change age to number of people
+ * TODO: change nPeople to number of people
  */
 public class Booking {
 
@@ -14,28 +15,25 @@ public class Booking {
     private int activityId;
     private String name;
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    private LocalDate startDate;
-    private int age;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    private LocalDate endDate;
+    private LocalDate date;
+    private int nPeople;
 
 
     public Booking() {
 
     }
 
-    public Booking(String name, LocalDate startDate) {
+    public Booking(String name, LocalDate date) {
         this.name = name;
-        this.startDate = startDate;
+        this.date = date;
     }
 
-    public Booking(int id, int activityId, String name, LocalDate startDate, int age, LocalDate endDate) {
+    public Booking(int id, int activityId, String name, LocalDate date, int nPeople) {
         this.id = id;
         this.activityId = activityId;
         this.name = name;
-        this.startDate = startDate;
-        this.age = age;
-        this.endDate = endDate;
+        this.date = date;
+        this.nPeople = nPeople;
     }
 
     public int getId() {
@@ -62,35 +60,44 @@ public class Booking {
         this.name = name;
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
-    public int getAge() {
-        return age;
+    public int getnPeople() {
+        return nPeople;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
+    public void setnPeople(int nPeople) {
+        this.nPeople = nPeople;
     }
 
     @Override
     public String toString() {
         return "Booking{" +
                 "name='" + name + '\'' +
-                ", startDate=" + startDate +
+                ", date=" + date +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Booking booking = (Booking) o;
+        return id == booking.id &&
+                activityId == booking.activityId &&
+                nPeople == booking.nPeople &&
+                Objects.equals(name, booking.name) &&
+                Objects.equals(date, booking.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, activityId, name, date, nPeople);
     }
 }
