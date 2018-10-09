@@ -32,6 +32,7 @@ public class BookingController {
         return "activityInfo";
     }
 
+
     @PostMapping("/activityInfo")
     public String book(Model model, @ModelAttribute("bookingForm") BookingForm bookingForm, @RequestParam("id") int aid){
         bookingForm.setActivityId(aid);
