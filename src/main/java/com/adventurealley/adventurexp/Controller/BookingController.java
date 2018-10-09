@@ -44,6 +44,7 @@ public class BookingController {
         model.addAttribute("activity", activity);
 
         if (!bookingForm.validate()){
+            System.out.println("Form did not validate");
             model.addAttribute("errorMessage", "Invalid field");
             return "activityInfo";
         }
@@ -52,8 +53,11 @@ public class BookingController {
 
         int id = bookingRepository.create(booking);
         if(id == -1){
+            System.out.println("Error creating booking");
             model.addAttribute("errorMessage", "Error creating the booking (database error)");
         }
+
+        System.out.println("Success!");
 
         model.addAttribute("successMessage", "Your booking number #" + id + " has been registered!");
 

@@ -19,12 +19,21 @@ public class BookingForm implements Form<Booking> {
 
     @Override
     public boolean validate() {
-
+        System.out.println(this.activityId);
         boolean activityId 	= ActivityRepository.getInstance().read(this.activityId) != null;
+        System.out.println(activityId);
+        System.out.println(this.name);
         boolean name        = this.name != null && this.name.length() > 0;
-        boolean startDate 	= this.startDate != null && this.startDate.isAfter(LocalDate.now());
-        boolean endDate 	= startDate && this.endDate != null  && this.endDate.isAfter(this.startDate);
+        System.out.println(name);
+        System.out.println(this.startDate);
+        boolean startDate 	= this.startDate != null;
+        System.out.println(startDate);
+        System.out.println(this.endDate);
+        boolean endDate 	= this.endDate != null;
+        System.out.println(endDate);
+        System.out.println(this.age);
         boolean age         = this.age > 0 && this.age <= 150;
+        System.out.println(age);
         return activityId && name && startDate && endDate && age;
     }
 
